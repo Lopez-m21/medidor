@@ -20,7 +20,7 @@ app.get('/ver', (req, res) => {
       timestampsInSnapshots: true
     });
     var wholeData = []
-	db.collection('Valores').orderBy('fecha', 'asc').get()
+	db.collection('Lecturas').orderBy('fecha', 'asc').get()
     .then(snapshot => {
       snapshot.forEach(doc => {
       
@@ -39,18 +39,18 @@ app.post('/insertar', (req, res)=>{
 	db.settings({
       timestampsInSnapshots: true
     });
-    db.collection('Valores').add({
-      icalor: req.body.icalor,
-      iruido: req.body.iruido,
-      igas: req.body.igas,
-      fecha: new Date()
+    db.collection('Lecturas').add({
+      Presencia: req.body.Presencia,
+      Temperatura: req.body.Temperatura,
+      Dia: req.body.Dia,
+      Fecha: new Date()
     });
     res.send({
-      icalor: req.body.icalor,
-      iruido: req.body.iruido,
-      igas: req.body.igas,
-      fecha: new Date(),
-      status: 'Valores insertados!'
+      Presencia: req.body.Presencia,
+      Temperatura: req.body.Temperatura,
+      Dia: req.body.Dia,
+      Fecha: new Date(),
+      status: '¡Lecturas insertadas!'
   })
 })
 
